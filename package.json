@@ -1,0 +1,12 @@
+{
+  "name": "hofglueck-zittau",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Static multilingual website for Hofglück Zittau. No dependencies.",
+  "scripts": {
+    "build": "node build.mjs",
+    "serve": "node serve.mjs",
+    "start": "node build.mjs && node serve.mjs"
+  }
+}
