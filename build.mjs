@@ -18,7 +18,8 @@ const html = (strs, ...vals) => new Raw(strs.reduce((a, s, i) => a + s + (i < va
 
 const PAGES = { home: 'index.html', about: 'ueber-uns.html', exp: 'erlebnisse.html', abo: 'hof-abo.html', prod: 'hofprodukte.html', animals: 'unsere-tiere.html', contact: 'kontakt.html' };
 const money = (n, lang) => new Intl.NumberFormat(ui[lang].locale, { style: 'currency', currency: 'EUR' }).format(n);
-const mapQuery = encodeURIComponent(`${site.street}, ${site.zip} ${site.city}`);
+const coords = `${site.geo.lat.toFixed(7)},${site.geo.lng.toFixed(7)}`;
+const mapQuery = encodeURIComponent(coords);
 
 function ctx(lang, file) {
   const up = lang === 'de' ? '' : '../';
@@ -113,6 +114,7 @@ const pageHead = (c, title, lead, img) => html`
 
 const priceText = (c, a) => {
   const p = pricing[a.id];
+  if (p.free) return a[c.lang].free;
   const star = p.confirmed ? '' : '*';
   return Object.entries(p.units).map(([u, v]) => `${money(v, c.lang)}${star} / ${unitLabels[u][c.lang]}`).join(' · ');
 };
@@ -126,7 +128,7 @@ function activityCard(c, a) {
       <h3>${d.name}</h3>
       <p>${d.text}</p>
       <dl class="facts"><div><dt>${c.t.exp.who}</dt><dd>${d.who}</dd></div><div><dt>${c.t.exp.when}</dt><dd>${d.when}</dd></div><div><dt>${c.t.exp.priceFrom}</dt><dd class="price">${priceText(c, a)}</dd></div></dl>
-      <a class="btn btn-small" href="${c.file === 'erlebnisse.html' ? '' : 'erlebnisse.html'}#buchung" data-book="${a.id}">${c.t.cta.bookThis}</a>
+      ${pricing[a.id].free ? '' : html`<a class="btn btn-small" href="${c.file === 'erlebnisse.html' ? '' : 'erlebnisse.html'}#buchung" data-book="${a.id}">${c.t.cta.bookThis}</a>`}
     </div>
   </article>`;
 }
@@ -243,7 +245,7 @@ function expPage(c) {
   const { t, lang } = c; const e = t.exp;
   const cfg = {
     locale: t.locale, i18n: t.booking, closedWeekday: site.hours.closedWeekday, slots: site.slots,
-    activities: activities.map((a) => ({ id: a.id, name: a[lang].name, slots: a.slots, months: a.months || null, confirmed: pricing[a.id].confirmed,
+    activities: activities.filter((a) => !pricing[a.id].free).map((a) => ({ id: a.id, name: a[lang].name, slots: a.slots, months: a.months || null, confirmed: pricing[a.id].confirmed,
       units: Object.entries(pricing[a.id].units).map(([u, price]) => ({ id: u, label: unitLabels[u][lang], price })) })),
   };
   const json = new Raw(JSON.stringify(cfg).replace(/</g, '\\u003c'));
@@ -355,7 +357,7 @@ function contactPage(c) {
   ${pageHead(c, t.title, t.lead, ['zittau', ALTS.zittau[c.lang]])}
   <section class="section section-tight"><div class="wrap">
     <div class="grid grid-3">
-      <div class="note-card"><h2>${t.addr}</h2><p>${site.name}<br>${site.street}<br>${site.zip} ${site.city}</p><p class="small">${t.placeholder}</p></div>
+      <div class="note-card"><h2>${t.addr}</h2><p>${site.name}<br>${site.street}<br>${site.zip} ${site.city}</p><p class="small">Plus Code: ${site.plusCode}<br>GPS: ${coords.replace(',', ', ')}</p></div>
       <div class="note-card"><h2>${t.hours}</h2><table class="hours-table">${t.hoursRows.map((r) => html`<tr><th scope="row">${r[0]}</th><td>${r[1]}</td></tr>`)}</table></div>
       <div class="note-card"><h2>${t.write}</h2><p><a href="tel:${site.phone.replace(/\s/g, '')}">${site.phone}</a><br><a href="mailto:${site.email}">${site.email}</a></p></div>
     </div>
