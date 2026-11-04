@@ -3,6 +3,7 @@
   const root = document.getElementById('booking');
   const T = cfg.i18n;
   const eur = (n) => new Intl.NumberFormat(cfg.locale, { style: 'currency', currency: 'EUR' }).format(n);
+  const cost = (n) => (n === 0 ? T.free : eur(n));
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const iso = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
   const today = new Date(); today.setHours(0, 0, 0, 0);
@@ -31,6 +32,15 @@
   }
   const lines = () => cfg.activities.flatMap((a) => a.units.filter((u) => state.qty[key(a.id, u.id)] > 0).map((u) => ({ a, u, n: state.qty[key(a.id, u.id)], sum: u.price * state.qty[key(a.id, u.id)] })));
   const total = () => lines().reduce((s, l) => s + l.sum, 0);
+  // Why the chosen tickets cannot go ahead yet, or '' if they can.
+  function blocked() {
+    const short = cfg.activities.find((a) => {
+      const n = a.units.reduce((s, u) => s + (state.qty[key(a.id, u.id)] || 0), 0);
+      return a.minGroup && n > 0 && n < a.minGroup;
+    });
+    if (short) return T.minGroup.replace('{name}', short.name).replace('{n}', short.minGroup);
+    return lines().length && total() === 0 ? T.needPaid : '';
+  }
 
   function preselect() {
     let id = null;
@@ -81,13 +91,14 @@
         const k = key(a.id, u.id); const n = state.qty[k] || 0;
         const label = `${a.name}: ${u.label}`;
         return `<div class="ticket-row ${why ? 'off' : ''}"><div><span class="ticket-name">${esc(a.name)}</span>
-          <span class="ticket-sub">${esc(u.label)} · ${eur(u.price)}${a.confirmed ? '' : '*'}</span>${why ? `<span class="off-note">${esc(why)}</span>` : ''}</div>
+          <span class="ticket-sub">${esc(u.label)} · ${cost(u.price)}${a.confirmed ? '' : '*'}</span>${why ? `<span class="off-note">${esc(why)}</span>` : ''}</div>
           <div class="stepper-qty"><button type="button" data-qty="${k}" data-d="-1" ${n === 0 || why ? 'disabled' : ''} aria-label="${esc(T.decrease)}: ${esc(label)}">−</button>
           <output aria-live="polite">${n}</output><button type="button" data-qty="${k}" data-d="1" ${why || n >= 20 ? 'disabled' : ''} aria-label="${esc(T.increase)}: ${esc(label)}">+</button></div></div>`;
       });
     }).join('');
-    return `<h3 class="book-h">${esc(T.chooseTickets)}</h3>${rows}
-      <div class="book-nav"><button type="button" class="btn btn-ghost" data-go="0">${esc(T.back)}</button><button type="button" class="btn" data-go="2" ${total() > 0 ? '' : 'disabled'}>${esc(T.next)}</button></div>`;
+    const stop = blocked();
+    return `<h3 class="book-h">${esc(T.chooseTickets)}</h3>${rows}${stop ? `<p class="notice" role="status" style="margin-top:1rem">${esc(stop)}</p>` : ''}
+      <div class="book-nav"><button type="button" class="btn btn-ghost" data-go="0">${esc(T.back)}</button><button type="button" class="btn" data-go="2" ${total() > 0 && !stop ? '' : 'disabled'}>${esc(T.next)}</button></div>`;
   }
 
   function step2() {
@@ -103,7 +114,7 @@
 
   function ticketView() {
     const t = state.ticket;
-    const list = t.lines.map((l) => `<div class="sum-row"><span>${l.n} × ${esc(l.name)} (${esc(l.unit)})</span><span>${eur(l.sum)}</span></div>`).join('');
+    const list = t.lines.map((l) => `<div class="sum-row"><span>${l.n} × ${esc(l.name)} (${esc(l.unit)})</span><span>${cost(l.sum)}</span></div>`).join('');
     return `<div class="ticket" id="ticket"><div class="ticket-top"><h3>${esc(T.thanks)}</h3><p>${esc(T.ticketNote)}</p></div>
       <div class="ticket-qr" role="img" aria-label="QR-Code ${esc(t.no)}">${t.qr}</div>
       <p class="ticket-no">${esc(T.ticketNo)}: ${esc(t.no)}</p>
@@ -122,7 +133,7 @@
     const when = state.date ? `${fmtDate(state.date)}${state.slot ? ` · ${T[state.slot]} (${cfg.slots[state.slot]})` : ''}` : T.noDate;
     const ls = lines();
     return `<h3>${esc(T.summary)}</h3><p class="small" style="margin-top:0">${esc(when)}</p>
-      ${ls.length ? ls.map((l) => `<div class="sum-row"><span>${l.n} × ${esc(l.a.name)}${l.a.units.length > 1 ? ` (${esc(l.u.label)})` : ''}</span><span>${eur(l.sum)}</span></div>`).join('') : `<p class="small">${esc(T.empty)}</p>`}
+      ${ls.length ? ls.map((l) => `<div class="sum-row"><span>${l.n} × ${esc(l.a.name)}${l.a.units.length > 1 ? ` (${esc(l.u.label)})` : ''}</span><span>${cost(l.sum)}</span></div>`).join('') : `<p class="small">${esc(T.empty)}</p>`}
       <div class="sum-row sum-total" aria-live="polite"><span>${esc(T.total)}</span><span>${eur(total())}</span></div>`;
   }
 

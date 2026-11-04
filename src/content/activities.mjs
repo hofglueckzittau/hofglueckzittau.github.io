@@ -1,4 +1,5 @@
 // slots: which time windows the activity runs in. months: bookable months (1-12), omitted = all year.
+// minGroup: smallest number of people per booking, omitted = no minimum.
 export const activities = [
   { id: 'fuehrung', img: 'feld', slots: ['am', 'pm'],
     de: { name: 'Bauernhofführung', sub: 'Der ganze Hof in einer Tour', text: 'Geführte Tour über den Hof: Sie erfahren, wie wir Gemüse anbauen und unsere Tiere versorgen, und schauen dort hinein, wo sonst nur wir hinkommen.', who: 'Für alle', when: 'Täglich außer montags' },
@@ -20,18 +21,14 @@ export const activities = [
     de: { name: 'Gemüse selbst ernten', sub: 'Mit Korb und Schaufel aufs Feld', text: 'Mit Korb und Schaufel ab aufs Feld! Ernten Sie knackige Möhren, Rote Bete, Salat oder Kürbisse frisch vom Beet und nehmen Sie Ihr Gemüse direkt mit nach Hause.', who: 'Für alle', when: 'Saison: April bis Oktober' },
     en: { name: 'Pick your own vegetables', sub: 'Into the field with basket and spade', text: 'Grab a basket and spade and head for the field! Pull crisp carrots, beetroot, lettuce or pumpkins straight from the bed and take them home with you.', who: 'For everyone', when: 'Season: April to October' },
     vi: { name: 'Tự tay hái rau củ', sub: 'Xách giỏ và xẻng ra đồng', text: 'Xách giỏ và xẻng ra đồng thôi! Tự thu hoạch cà rốt giòn, củ dền, xà lách hay bí ngô ngay tại luống và mang thẳng về nhà.', who: 'Mọi người', when: 'Mùa vụ: tháng 4 đến tháng 10' } },
-  { id: 'butter', img: 'butter', slots: ['pm'],
-    de: { name: 'Butter selber machen', sub: 'Mitmach-Workshop, 45 Minuten', text: 'Von der frischen Hof-Milch zur eigenen Kräuterbutter! In diesem interaktiven Workshop lernen Sie das traditionelle Handwerk des Butterns und verkosten das Ergebnis direkt auf frischem Bauernbrot.', who: 'Anmeldung als Gruppe', when: '45 Minuten, nachmittags' },
-    en: { name: 'Make your own butter', sub: 'Hands-on workshop, 45 minutes', text: 'From fresh farm milk to your own herb butter! Learn the traditional craft of churning in this hands-on workshop, then taste the result on fresh farmhouse bread.', who: 'Group registration', when: '45 minutes, afternoons' },
-    vi: { name: 'Tự làm bơ thủ công', sub: 'Workshop thực hành, 45 phút', text: 'Từ sữa tươi của trang trại đến bơ thảo mộc của riêng bạn! Học nghề đánh bơ truyền thống và nếm ngay thành quả trên bánh mì đồng quê mới nướng.', who: 'Đăng ký theo nhóm', when: '45 phút, buổi chiều' } },
+  { id: 'butter', img: 'butter', slots: ['pm'], minGroup: 5,
+    de: { name: 'Butter selber machen', sub: 'Mitmach-Workshop, 45 Minuten', text: 'Von der frischen Hof-Milch zur eigenen Kräuterbutter! In diesem interaktiven Workshop lernen Sie das traditionelle Handwerk des Butterns und verkosten das Ergebnis direkt auf frischem Bauernbrot.', who: 'Anmeldung als Gruppe (ab 5 Personen)', when: '45 Minuten, nachmittags' },
+    en: { name: 'Make your own butter', sub: 'Hands-on workshop, 45 minutes', text: 'From fresh farm milk to your own herb butter! Learn the traditional craft of churning in this hands-on workshop, then taste the result on fresh farmhouse bread.', who: 'Group registration (5 people or more)', when: '45 minutes, afternoons' },
+    vi: { name: 'Tự làm bơ thủ công', sub: 'Workshop thực hành, 45 phút', text: 'Từ sữa tươi của trang trại đến bơ thảo mộc của riêng bạn! Học nghề đánh bơ truyền thống và nếm ngay thành quả trên bánh mì đồng quê mới nướng.', who: 'Đăng ký theo nhóm (từ 5 người trở lên)', when: '45 phút, buổi chiều' } },
   { id: 'garten', img: 'hochbeet', slots: ['am', 'pm'],
     de: { name: 'Garten- & Pflanzkurse', sub: 'Für Groß und Klein', text: 'In unseren Kursen lernen Kinder und Erwachsene praxisnah, wie man Pflanzen richtig anbaut, Hochbeete anlegt und einen nachhaltigen Garten pflegt.', who: 'Für alle', when: 'Nach Kursplan' },
     en: { name: 'Gardening & planting courses', sub: 'For young and old', text: 'Children and adults learn in practice how to grow plants properly, build raised beds and look after a sustainable garden.', who: 'For everyone', when: 'By course schedule' },
     vi: { name: 'Khóa học làm vườn', sub: 'Cho cả người lớn và trẻ nhỏ', text: 'Trẻ em và người lớn được thực hành cách trồng cây đúng kỹ thuật, làm luống cao và chăm sóc một khu vườn bền vững.', who: 'Mọi người', when: 'Theo lịch khóa học' } },
-  { id: 'alpaka', img: 'alpaka', slots: ['am', 'pm'],
-    de: { name: 'Alpaka-Wanderung', sub: 'Ein gemütlicher Spaziergang', text: 'Führen Sie ein Alpaka gemächlich über das Hofgelände, lernen Sie seine neugierige, höfliche Art kennen und nehmen Sie ein Porträtfoto mit nach Hause.', who: 'Für alle', when: 'Nach Buchung' },
-    en: { name: 'Alpaca walk', sub: 'A relaxed stroll', text: 'Lead an alpaca at an easy pace around the farm, get to know its curious, polite nature and take home a portrait photo.', who: 'For everyone', when: 'By booking' },
-    vi: { name: 'Dạo bộ cùng Alpaca', sub: 'Một cuộc tản bộ thong dong', text: 'Dắt bạn alpaca thong dong quanh trang trại, làm quen với tính cách tò mò, lịch sự của chúng và mang về một tấm ảnh chân dung.', who: 'Mọi người', when: 'Theo lịch đặt' } },
 ];
 
 export const unitLabels = {

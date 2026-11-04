@@ -8,7 +8,7 @@ export const ui = {
     meta: {
       home: ['Hofglück Zittau | Erlebnisbauernhof in Zittau, Sachsen', 'Erlebnisbauernhof in Zittau: Tiere füttern, Eier sammeln, Gemüse selbst ernten, Butter machen. Tickets online buchen, Hof-Abo und Hof-Kiosk.'],
       about: ['Über uns & Projekt | Hofglück Zittau', 'Die Geschichte von Hofglück Zittau: nachhaltige Landwirtschaft, Bildung für Familien und weniger Lebensmittelverschwendung in der Oberlausitz.'],
-      exp: ['Erlebnisse & Online-Tickets | Hofglück Zittau', 'Hofführung, Tiere füttern, Eier sammeln, Gemüse ernten, Butter-Workshop, Gartenkurse und Alpaka-Wanderung in Zittau online buchen.'],
+      exp: ['Erlebnisse & Online-Tickets | Hofglück Zittau', 'Hofführung, Tiere füttern, Eier sammeln, Gemüse ernten, Butter-Workshop und Gartenkurse in Zittau online buchen.'],
       abo: ['Hof-Abo Gemüsekiste & Hof-Kiosk | Hofglück Zittau', 'Saisonale Gemüsekiste aus Zittau im Abo mit Pfandkisten-System, dazu der Hof-Kiosk mit Eiern, Butter und Gemüse.'],
       prod: ['Hofprodukte & Rezepte nach Saison | Hofglück Zittau', 'Saisonales Gemüse aus Zittau, alte Sorten und vietnamesische Kräuter, mit Lagertipps und Rezepten.'],
       animals: ['Unsere Tiere | Hofglück Zittau', 'Lernen Sie unsere neun Tierarten kennen: Alpakas, Schwarznasenschafe, Zwergziegen, Laufenten und mehr.'],
@@ -17,7 +17,7 @@ export const ui = {
     home: {
       eyebrow: 'Erlebnisbauernhof in Zittau', tagline: 'Natur erleben, Glück genießen in Zittau',
       lead: 'Tiere füttern, Eier aus dem Nest holen, Gemüse selbst ernten: Bei uns wird der Bauernhof für die ganze Familie zum Mitmach-Erlebnis.',
-      stats: [['100 %', 'Gemüse vom eigenen Feld'], ['9', 'freundliche Tierarten'], ['8', 'Mitmach-Erlebnisse'], ['1 : 1', 'Mehrwegkisten statt Müll']],
+      stats: [['100 %', 'Gemüse vom eigenen Feld'], ['9', 'freundliche Tierarten'], ['7', 'Mitmach-Erlebnisse'], ['1 : 1', 'Mehrwegkisten statt Müll']],
       expTitle: 'Was Sie bei uns erleben', expLead: 'Drei Wege auf den Hof. Alle weiteren Angebote finden Sie unter Erlebnisse.',
       kioskCard: { name: 'Hof-Kiosk', sub: 'Tagesfrisch einkaufen', text: 'Gemüse, Butter, Eier und kühle Erfrischungen, direkt auf dem Hofareal und ohne Ticket.' },
       aboTitle: 'Der Hof kommt mit nach Hause', aboText: 'Mit dem Hof-Abo holen Sie wöchentlich oder monatlich eine Kiste mit saisonalem Gemüse bei uns ab. Die Mehrwegkiste tauschen Sie einfach 1 zu 1, so entsteht kein Verpackungsmüll.',
@@ -69,7 +69,7 @@ export const ui = {
     credits: { title: 'Bildnachweis', lead: 'Die Fotos sind Beispielbilder von Wikimedia Commons und zeigen nicht den Hof. Sie werden vor dem Start durch eigene Fotos ersetzt.', col: ['Motiv', 'Urheber', 'Lizenz'] },
     booking: {
       steps: ['Tag & Zeit', 'Tickets', 'Daten & Zahlung', 'E-Ticket'], chooseDate: 'Wählen Sie Ihren Besuchstag', chooseSlot: 'Wählen Sie Ihr Zeitfenster', am: 'Vormittag', pm: 'Nachmittag', closed: 'Montags geschlossen', prevMonth: 'Vorheriger Monat', nextMonth: 'Nächster Monat',
-      chooseTickets: 'Was möchten Sie erleben?', notThisSlot: 'Nur vormittags', notThisSlotPm: 'Nur nachmittags', notThisMonth: 'Saison: April bis Oktober', removed: 'Passt nicht zum gewählten Termin und wurde entfernt:',
+      chooseTickets: 'Was möchten Sie erleben?', notThisSlot: 'Nur vormittags', notThisSlotPm: 'Nur nachmittags', notThisMonth: 'Saison: April bis Oktober', free: 'kostenlos', minGroup: '{name}: mindestens {n} Personen.', needPaid: 'Kinder sind kostenlos, bitte buchen Sie auch mindestens einen Erwachsenen.', removed: 'Passt nicht zum gewählten Termin und wurde entfernt:',
       summary: 'Ihre Buchung', noDate: 'Noch kein Termin gewählt', empty: 'Noch keine Tickets gewählt', total: 'Gesamt', back: 'Zurück', next: 'Weiter', increase: 'Mehr', decrease: 'Weniger',
       contact: 'Ihre Daten', name: 'Name', email: 'E-Mail (für Ihr Ticket)', payment: 'Zahlungsart', demoPay: 'Demo: Es wird keine echte Zahlung ausgelöst. Geben Sie keine Bankdaten ein, hier werden auch keine abgefragt.', pay: 'Jetzt bezahlen (Demo)', paying: 'Zahlung wird simuliert …',
       methods: { paypal: 'PayPal', card: 'Kreditkarte (Visa / Mastercard)', sepa: 'SEPA-Lastschrift', wallet: 'Apple Pay / Google Pay' },
@@ -85,7 +85,7 @@ export const ui = {
     meta: {
       home: ['Hofglück Zittau | Experience farm in Zittau, Saxony', 'Experience farm in Zittau, Germany: feed animals, collect eggs, pick your own vegetables and make butter. Book tickets online.'],
       about: ['About us | Hofglück Zittau', 'The story of Hofglück Zittau: sustainable farming, hands-on education for families and less food waste in Upper Lusatia.'],
-      exp: ['Experiences & online tickets | Hofglück Zittau', 'Book a farm tour, animal feeding, egg collecting, vegetable picking, butter workshop, gardening courses and alpaca walks in Zittau.'],
+      exp: ['Experiences & online tickets | Hofglück Zittau', 'Book a farm tour, animal feeding, egg collecting, vegetable picking, butter workshop and gardening courses in Zittau.'],
       abo: ['Hof-Abo vegetable box & Hof-Kiosk | Hofglück Zittau', 'A seasonal vegetable box subscription from Zittau with a reusable crate deposit system, plus our on-site kiosk.'],
       prod: ['Seasonal produce & recipes | Hofglück Zittau', 'Seasonal vegetables from Zittau, heirloom varieties and Vietnamese herbs, with storage tips and recipes.'],
       animals: ['Our animals | Hofglück Zittau', 'Meet our nine species: alpacas, Valais Blacknose sheep, pygmy goats, runner ducks and more.'],
@@ -94,7 +94,7 @@ export const ui = {
     home: {
       eyebrow: 'Experience farm in Zittau', tagline: 'Natur erleben, Glück genießen in Zittau',
       lead: 'Feed the animals, take eggs from the nest, pick your own vegetables: here the farm becomes a hands-on adventure for the whole family.',
-      stats: [['100%', 'vegetables from our own fields'], ['9', 'friendly animal species'], ['8', 'hands-on experiences'], ['1:1', 'reusable crates, not waste']],
+      stats: [['100%', 'vegetables from our own fields'], ['9', 'friendly animal species'], ['7', 'hands-on experiences'], ['1:1', 'reusable crates, not waste']],
       expTitle: 'What you can experience', expLead: 'Three ways onto the farm. Find everything else under Experiences.',
       kioskCard: { name: 'Hof-Kiosk', sub: 'Shop fresh every day', text: 'Vegetables, butter, eggs and cool drinks, right on the farm and no ticket needed.' },
       aboTitle: 'Take the farm home with you', aboText: 'With the Hof-Abo you collect a box of seasonal vegetables from us every week or month. Just swap the reusable crate 1:1, with no packaging waste.',
@@ -146,7 +146,7 @@ export const ui = {
     credits: { title: 'Image credits', lead: 'These sample photos come from Wikimedia Commons and do not show the farm. They will be replaced with our own photos before launch.', col: ['Subject', 'Author', 'Licence'] },
     booking: {
       steps: ['Day & time', 'Tickets', 'Details & payment', 'E-ticket'], chooseDate: 'Choose your visit day', chooseSlot: 'Choose your time slot', am: 'Morning', pm: 'Afternoon', closed: 'Closed on Mondays', prevMonth: 'Previous month', nextMonth: 'Next month',
-      chooseTickets: 'What would you like to do?', notThisSlot: 'Mornings only', notThisSlotPm: 'Afternoons only', notThisMonth: 'Season: April to October', removed: 'Not available at the chosen time and removed:',
+      chooseTickets: 'What would you like to do?', notThisSlot: 'Mornings only', notThisSlotPm: 'Afternoons only', notThisMonth: 'Season: April to October', free: 'free', minGroup: '{name}: at least {n} people.', needPaid: 'Children go free, so please also book at least one adult.', removed: 'Not available at the chosen time and removed:',
       summary: 'Your booking', noDate: 'No date chosen yet', empty: 'No tickets chosen yet', total: 'Total', back: 'Back', next: 'Continue', increase: 'More', decrease: 'Fewer',
       contact: 'Your details', name: 'Name', email: 'Email (for your ticket)', payment: 'Payment method', demoPay: 'Demo: no real payment is made. Please do not enter bank details, none are requested here.', pay: 'Pay now (demo)', paying: 'Simulating payment …',
       methods: { paypal: 'PayPal', card: 'Credit card (Visa / Mastercard)', sepa: 'SEPA direct debit', wallet: 'Apple Pay / Google Pay' },
@@ -162,7 +162,7 @@ export const ui = {
     meta: {
       home: ['Hofglück Zittau | Trang trại trải nghiệm tại Zittau, Sachsen', 'Trang trại trải nghiệm tại Zittau, Đức: cho thú ăn, nhặt trứng, tự hái rau, làm bơ. Đặt vé trực tuyến, Hof-Abo và Hof-Kiosk.'],
       about: ['Giới thiệu dự án | Hofglück Zittau', 'Câu chuyện của Hofglück Zittau: nông nghiệp bền vững, giáo dục thực tế cho gia đình và giảm lãng phí thực phẩm.'],
-      exp: ['Trải nghiệm & đặt vé trực tuyến | Hofglück Zittau', 'Đặt tour trang trại, cho thú ăn, nhặt trứng, hái rau, workshop làm bơ, khóa học làm vườn và dạo bộ cùng alpaca tại Zittau.'],
+      exp: ['Trải nghiệm & đặt vé trực tuyến | Hofglück Zittau', 'Đặt tour trang trại, cho thú ăn, nhặt trứng, hái rau, workshop làm bơ và khóa học làm vườn tại Zittau.'],
       abo: ['Hộp nông sản Hof-Abo & Hof-Kiosk | Hofglück Zittau', 'Đăng ký hộp rau theo mùa từ Zittau với hệ thống thùng đặt cọc tái sử dụng, cùng ki-ốt ngay tại trang trại.'],
       prod: ['Nông sản theo mùa & công thức | Hofglück Zittau', 'Rau củ theo mùa từ Zittau, giống cổ và rau Việt Nam, kèm mẹo bảo quản và công thức nấu ăn.'],
       animals: ['Động vật | Hofglück Zittau', 'Làm quen với chín loài vật: alpaca, cừu mũi đen, dê lùn, vịt chạy và nhiều bạn khác.'],
@@ -171,7 +171,7 @@ export const ui = {
     home: {
       eyebrow: 'Trang trại trải nghiệm tại Zittau', tagline: 'Natur erleben, Glück genießen in Zittau',
       lead: 'Cho thú ăn, nhặt trứng trong ổ, tự tay hái rau: tại đây, trang trại trở thành chuyến phiêu lưu thực hành cho cả gia đình.',
-      stats: [['100%', 'rau củ từ chính ruộng của trang trại'], ['9', 'loài vật thân thiện'], ['8', 'hoạt động trải nghiệm'], ['1:1', 'thùng tái sử dụng thay cho rác thải']],
+      stats: [['100%', 'rau củ từ chính ruộng của trang trại'], ['9', 'loài vật thân thiện'], ['7', 'hoạt động trải nghiệm'], ['1:1', 'thùng tái sử dụng thay cho rác thải']],
       expTitle: 'Bạn sẽ trải nghiệm gì', expLead: 'Ba cách đến với trang trại. Các hoạt động còn lại nằm ở mục Trải nghiệm.',
       kioskCard: { name: 'Hof-Kiosk', sub: 'Mua đồ tươi mỗi ngày', text: 'Rau củ, bơ, trứng và đồ uống mát ngay trong khuôn viên trang trại, không cần vé.' },
       aboTitle: 'Mang trang trại về nhà', aboText: 'Với Hof-Abo, bạn đến nhận hộp rau củ theo mùa hằng tuần hoặc hằng tháng. Chỉ cần đổi thùng tái sử dụng theo tỷ lệ 1:1, không tạo rác bao bì.',
@@ -223,7 +223,7 @@ export const ui = {
     credits: { title: 'Nguồn ảnh', lead: 'Các ảnh minh họa lấy từ Wikimedia Commons, không chụp tại trang trại, và sẽ được thay bằng ảnh thật trước khi ra mắt.', col: ['Chủ đề', 'Tác giả', 'Giấy phép'] },
     booking: {
       steps: ['Ngày & giờ', 'Chọn vé', 'Thông tin & thanh toán', 'Vé điện tử'], chooseDate: 'Chọn ngày tham quan', chooseSlot: 'Chọn khung giờ', am: 'Buổi sáng', pm: 'Buổi chiều', closed: 'Nghỉ thứ Hai', prevMonth: 'Tháng trước', nextMonth: 'Tháng sau',
-      chooseTickets: 'Bạn muốn trải nghiệm gì?', notThisSlot: 'Chỉ buổi sáng', notThisSlotPm: 'Chỉ buổi chiều', notThisMonth: 'Mùa vụ: tháng 4 đến tháng 10', removed: 'Không phù hợp với lịch đã chọn nên đã được bỏ:',
+      chooseTickets: 'Bạn muốn trải nghiệm gì?', notThisSlot: 'Chỉ buổi sáng', notThisSlotPm: 'Chỉ buổi chiều', notThisMonth: 'Mùa vụ: tháng 4 đến tháng 10', free: 'miễn phí', minGroup: '{name}: tối thiểu {n} người.', needPaid: 'Trẻ em được miễn phí, vui lòng đặt thêm ít nhất một vé người lớn.', removed: 'Không phù hợp với lịch đã chọn nên đã được bỏ:',
       summary: 'Đơn đặt của bạn', noDate: 'Chưa chọn ngày', empty: 'Chưa chọn vé', total: 'Tổng cộng', back: 'Quay lại', next: 'Tiếp tục', increase: 'Thêm', decrease: 'Bớt',
       contact: 'Thông tin của bạn', name: 'Họ tên', email: 'Email (để nhận vé)', payment: 'Phương thức thanh toán', demoPay: 'Demo: không có giao dịch thật. Vui lòng không nhập thông tin ngân hàng, trang này cũng không yêu cầu.', pay: 'Thanh toán ngay (demo)', paying: 'Đang mô phỏng thanh toán …',
       methods: { paypal: 'PayPal', card: 'Thẻ tín dụng (Visa / Mastercard)', sepa: 'SEPA-Lastschrift', wallet: 'Apple Pay / Google Pay' },

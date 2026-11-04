@@ -1,12 +1,13 @@
 // Everything the farm must confirm before go-live lives in this file.
 export const site = {
   name: 'Hofglück Zittau',
-  url: 'https://buigiaanfb1.github.io/hofglueck-zittau', // TODO: real domain once there is one
+  url: 'https://hofglueckzittau.github.io',
   street: 'Lückendorfer Straße 16',
   zip: '02763',
   city: 'Zittau',
-  phone: '+49 123408899',
+  phone: '+49 123408899', // TODO: sample number, replace before go-live
   email: 'hofglueckzittau@gmail.com',
+  instagram: 'hofglueck_zittau',
   owner: '[Name des Betreibers]', // TODO
   geo: { lat: 50.867849, lng: 14.806608 },
   plusCode: 'VR94+4JQ Zittau',
@@ -21,9 +22,8 @@ export const pricing = {
   foto: { confirmed: true, free: true, units: {} }, // free, no time limit, not in the booking flow
   eier: { confirmed: false, units: { person: 4 } },
   ernten: { confirmed: false, units: { person: 6 } },
-  butter: { confirmed: false, units: { person: 12 } },
-  garten: { confirmed: false, units: { person: 15 } },
-  alpaka: { confirmed: false, units: { person: 18 } },
+  butter: { confirmed: true, units: { adult: 9, child: 5 } },
+  garten: { confirmed: true, units: { adult: 8, child: 0 } }, // children free
 };
 
 export const abo = {

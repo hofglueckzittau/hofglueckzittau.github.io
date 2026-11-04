@@ -88,7 +88,7 @@ ${opts.head || ''}
     <div><h2>${t.footer.visit}</h2>
       <p>${site.street}<br>${site.zip} ${site.city}</p>
       <p>${t.contact.hoursRows.map((r) => html`${r[0]}: ${r[1]}<br>`)}</p>
-      <p><a href="tel:${site.phone.replace(/\s/g, '')}">${site.phone}</a><br><a href="mailto:${site.email}">${site.email}</a></p>
+      <p><a href="tel:${site.phone.replace(/\s/g, '')}">${site.phone}</a><br><a href="mailto:${site.email}">${site.email}</a><br><a href="https://www.instagram.com/${site.instagram}/" rel="noopener" target="_blank">Instagram: @${site.instagram}</a></p>
     </div>
     <div><h2>${t.footer.explore}</h2><ul>${navItems.slice(0, 5)}</ul></div>
     <div><h2>${t.footer.legal}</h2><ul>
@@ -116,7 +116,7 @@ const priceText = (c, a) => {
   const p = pricing[a.id];
   if (p.free) return a[c.lang].free;
   const star = p.confirmed ? '' : '*';
-  return Object.entries(p.units).map(([u, v]) => `${money(v, c.lang)}${star} / ${unitLabels[u][c.lang]}`).join(' · ');
+  return Object.entries(p.units).map(([u, v]) => (v === 0 ? `${unitLabels[u][c.lang]}: ${c.t.booking.free}` : `${money(v, c.lang)}${star} / ${unitLabels[u][c.lang]}`)).join(' · ');
 };
 
 function activityCard(c, a) {
@@ -180,7 +180,7 @@ function homePage(c) {
   const { t, lang } = c; const h = t.home;
   const pick = (id) => activities.find((a) => a.id === id);
   const small = (a) => { const d = a[lang]; return html`<a class="card card-link" href="erlebnisse.html#buchung" data-book="${a.id}">${pic(c, a.img, d.name, 'card-img')}<div class="card-body"><p class="eyebrow">${d.sub}</p><h3>${d.name}</h3><p class="price">${priceText(c, a)}</p></div></a>`; };
-  const jsonLd = { '@context': 'https://schema.org', '@type': ['LocalBusiness', 'TouristAttraction'], name: site.name, description: t.meta.home[1], url: site.url, telephone: site.phone, email: site.email, image: `${site.url}/assets/img/hero.webp`, priceRange: '€', address: { '@type': 'PostalAddress', streetAddress: site.street, postalCode: site.zip, addressLocality: site.city, addressRegion: 'Sachsen', addressCountry: 'DE' }, geo: { '@type': 'GeoCoordinates', latitude: site.geo.lat, longitude: site.geo.lng }, areaServed: ['Zittau', 'Oberlausitz', 'Sachsen'], openingHoursSpecification: [{ '@type': 'OpeningHoursSpecification', dayOfWeek: ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], opens: site.hours.open, closes: site.hours.close }] };
+  const jsonLd = { '@context': 'https://schema.org', '@type': ['LocalBusiness', 'TouristAttraction'], name: site.name, description: t.meta.home[1], url: site.url, telephone: site.phone, email: site.email, sameAs: [`https://www.instagram.com/${site.instagram}/`], image: `${site.url}/assets/img/hero.webp`, priceRange: '€', address: { '@type': 'PostalAddress', streetAddress: site.street, postalCode: site.zip, addressLocality: site.city, addressRegion: 'Sachsen', addressCountry: 'DE' }, geo: { '@type': 'GeoCoordinates', latitude: site.geo.lat, longitude: site.geo.lng }, areaServed: ['Zittau', 'Oberlausitz', 'Sachsen'], openingHoursSpecification: [{ '@type': 'OpeningHoursSpecification', dayOfWeek: ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], opens: site.hours.open, closes: site.hours.close }] };
   const head = new Raw(`<script type="application/ld+json">${JSON.stringify(jsonLd).replace(/</g, '\\u003c')}</script>`);
   const body = html`
   <section class="hero">
@@ -245,7 +245,7 @@ function expPage(c) {
   const { t, lang } = c; const e = t.exp;
   const cfg = {
     locale: t.locale, i18n: t.booking, closedWeekday: site.hours.closedWeekday, slots: site.slots,
-    activities: activities.filter((a) => !pricing[a.id].free).map((a) => ({ id: a.id, name: a[lang].name, slots: a.slots, months: a.months || null, confirmed: pricing[a.id].confirmed,
+    activities: activities.filter((a) => !pricing[a.id].free).map((a) => ({ id: a.id, name: a[lang].name, slots: a.slots, months: a.months || null, minGroup: a.minGroup || 0, confirmed: pricing[a.id].confirmed,
       units: Object.entries(pricing[a.id].units).map(([u, price]) => ({ id: u, label: unitLabels[u][lang], price })) })),
   };
   const json = new Raw(JSON.stringify(cfg).replace(/</g, '\\u003c'));
@@ -359,7 +359,7 @@ function contactPage(c) {
     <div class="grid grid-3">
       <div class="note-card"><h2>${t.addr}</h2><p>${site.name}<br>${site.street}<br>${site.zip} ${site.city}</p><p class="small">Plus Code: ${site.plusCode}<br>GPS: ${coords.replace(',', ', ')}</p></div>
       <div class="note-card"><h2>${t.hours}</h2><table class="hours-table">${t.hoursRows.map((r) => html`<tr><th scope="row">${r[0]}</th><td>${r[1]}</td></tr>`)}</table></div>
-      <div class="note-card"><h2>${t.write}</h2><p><a href="tel:${site.phone.replace(/\s/g, '')}">${site.phone}</a><br><a href="mailto:${site.email}">${site.email}</a></p></div>
+      <div class="note-card"><h2>${t.write}</h2><p><a href="tel:${site.phone.replace(/\s/g, '')}">${site.phone}</a><br><a href="mailto:${site.email}">${site.email}</a><br><a href="https://www.instagram.com/${site.instagram}/" rel="noopener" target="_blank">Instagram: @${site.instagram}</a></p></div>
     </div>
     <h2 class="mt">${t.mapTitle}</h2>
     <div class="map" id="map" data-src="https://www.google.com/maps?q=${mapQuery}&output=embed" data-title="${t.mapTitle}">
