@@ -346,7 +346,6 @@ function animalsPage(c) {
   ${pageHead(c, t.title, t.lead, ['schwarznase', ALTS.schaf[c.lang]])}
   <section class="section section-tight"><div class="wrap">
     <div class="grid grid-3">${animals.map((a) => html`<div id="${a.id}" class="anchor-card">${animalCard(c, a)}</div>`)}</div>
-    <p class="footnote">${t.photo}</p>
     <p class="center"><a class="btn" href="erlebnisse.html#buchung">${c.t.cta.book}</a></p>
   </div></section>`);
 }
